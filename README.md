@@ -1,7 +1,7 @@
 # secretproject
 # UML
 
-![alt-tag](https://github.com/mattdmorris/secretproject/blob/master/umlpng.png)
+![alt-tag](https://github.com/mattdmorris/secretproject/blob/master/uml/umlpng.png)
 
 # Things to do
 
