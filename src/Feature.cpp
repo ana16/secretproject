@@ -51,9 +51,71 @@ public:
 };
 
 
+class Field : Feature{
+private:
+	
+	
+	
+	
+		
+public:
+	
+	
+	
+	
+};
+
+class Road : Feature{
+private:
+	
+	
+	
+	
+		
+public:
+	
+	
+	
+	
+};
+class City : Feature{
+private:
+	
+	
+	
+	
+		
+public:
+	
+	
+	
+	
+};
+class Monastery : Feature{
+private:
+	
+	
+	
+	
+		
+public:
+	
+	
+	
+	
+};
 
 
 
+int main(){
+	
+	Field hello;
+	Road fd;
+	City jdkfljs;
+	Monastery mojdfls;
+	
+	return 0;
+};
 
 
 
