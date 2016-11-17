@@ -1,5 +1,6 @@
 #include <iostream>
 // #include "Feature.cpp"
+// #include "Deck.cpp"
 
 
 using namespace std;
@@ -20,7 +21,11 @@ private:
 public:
 	
 	Board{
-		
+		int x = 50, y = 50;
+        Tile gameGraph[x][y];
+        Player1.meeples = 7;
+        Player2.meeples = 7;
+        
 		
 		
 		
@@ -29,14 +34,30 @@ public:
 	
 	
 	void addTile(Tile tile){
-		//ai will rotate for us, we just need to place it, keeps api simple
-		
+        
+        if(turn){
+        //ai will rotate for us, we just need to place it, keeps api simple
+        
+		//pop tile from stack
+        
+        //check available positions on board from array
+        
+        //check if placement is legal
+        
+        //place tile and connect the sides 
+            
+        //check which meeple placements are legal
+            
+        //if it is city/road connect it to a feature
+            
+        }
+
 		
 	
 	}
 	
 	void printBoard(){
-		//print to console for debug
+		//print rows one by one
 	}
 	
 	string exportBoardState(){
