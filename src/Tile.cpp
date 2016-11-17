@@ -25,20 +25,23 @@ private:
 public:
 	
 	Tile(int featureInput[]){
-		Features[] = new Features[15];
-		Features* toBeAdded;
+		Feature positionArr [15];
+		Feature* toBeAdded;
+        
+        toBeAdded = positionArr;
+        
 		for(int i = 0; i < 12; i++){
 			if(featureInput[i] == 0){
 				toBeAdded = new Field;
 			}
 			else if(featureInput[i] == 1){
-				toBeAdded = new City;
+				positionArr[i] = new City;
 			}
 			else if(featureInput[i] == 2){
-				toBeAdded = new Road;
+				positionArr[i] = new Road;
 			}
 			else if(featureInput[i] == 3){
-				toBeAdded = new Monastery;
+				positionArr[i] = new Monastery;
 			}
 			Features[i] = toBeAdded;
 		}
