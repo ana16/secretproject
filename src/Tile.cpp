@@ -29,16 +29,16 @@ public:
 		Features* toBeAdded;
 		for(int i = 0; i < 12; i++){
 			if(featureInput[i] == 0){
-				toBeAdded = new Feature;
+				toBeAdded = new Field;
 			}
 			else if(featureInput[i] == 1){
-				toBeAdded = new Feature;
+				toBeAdded = new City;
 			}
 			else if(featureInput[i] == 2){
-				toBeAdded = new Feature;
+				toBeAdded = new Road;
 			}
 			else if(featureInput[i] == 3){
-				toBeAdded = new Feature;
+				toBeAdded = new Monastery;
 			}
 			Features[i] = toBeAdded;
 		}
