@@ -7,40 +7,44 @@ using namespace std;
 class Tile{
 	
 private:
-	//consider making this an array of Strings
-	//[north,south,east,west,ne,nw,se,sw,center]
+	//consider making this an array of Features
+	//[regions,center,amt,animal]
 	
-	Feature* northEntity;
-	Feature* southEntity;
-	Feature* eastEntity;
-	Feature* westEntity;
-	Feature* neEntity;
-	Feature* nwEntity;
-	Feature* seEntity;
-	Feature* swEntity;
-	Feature* centerEntity;
+	// Feature* northEntity;
+	// Feature* southEntity;
+	// Feature* eastEntity;
+	// Feature* westEntity;
+	// Feature* neEntity;
+	// Feature* nwEntity;
+	// Feature* seEntity;
+	// Feature* swEntity;
+	// Feature* centerEntity;
 	Feature* Features[];
+	int animal;
 	
 public:
 	
-	Tile(int featureInput[],string options){
-		Features[] = new Features[9];
+	Tile(int featureInput[]){
+		Features[] = new Features[15];
 		Features* toBeAdded;
-		for(int i = 0; i < 9; i++){
-			if(featureInput == 0){
+		for(int i = 0; i < 12; i++){
+			if(featureInput[i] == 0){
 				toBeAdded = new Feature;
 			}
-			else if(featureInput == 1){
+			else if(featureInput[i] == 1){
 				toBeAdded = new Feature;
 			}
-			else if(featureInput == 2){
+			else if(featureInput[i] == 2){
 				toBeAdded = new Feature;
 			}
-			else if(featureInput == 3){
+			else if(featureInput[i] == 3){
 				toBeAdded = new Feature;
 			}
 			Features[i] = toBeAdded;
 		}
+		
+		animal = featureInput[14];
+		
 		toBeAdded = NULL;//not sure if necessary
 		delete toBeAdded; //Not sure if this removes last pointer or deleted pointer variable.
 	}
