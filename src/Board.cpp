@@ -1,46 +1,34 @@
+#ifndef Board_h
+#define Board_h
+
 #include <iostream>
-// #include "Feature.cpp"
-// #include "Deck.cpp"
+#include "Board.h"
 
 
 using namespace std;
 
-class Board{
-	
-private:
-	
-	Tile gameGraph[][];
-	Feature fields[];
-	Feature cities[];
-	Feature roads[];
-	Feature monasteries[];
-	bool turn;
-	Player Player1;
-	Player Player2;
-		
-public:
-	
-	Board{
-		int x = 50, y = 50;
-        Tile gameGraph[x][y];
-        Player1.meeples = 7;
-        Player2.meeples = 7;
-        
-		
-		
-		
-	}
-	
-	
-	
-	void addTile(Tile tile){
+
+
+int main(){
+     Board myBoard;
+     myBoard.addTile();
+     myBoard.printBoard();
+    
+    return 0;
+}
+
+void Board::addTile(){
         
         if(turn){
         //ai will rotate for us, we just need to place it, keeps api simple
-        
+        int test [15] = {0, 2, 0, 1, 1, 1, 0, 2, 0, 0, 0, 0, 2, 3, 0};
 		//pop tile from stack
         
+        Tile firstTile = Tile(test);
+        cout << "Tile has been accessed\n";
         //check available positions on board from array
+        gameGraph[25][25] = firstTile;
+        cout << "Tile has been placed\n";
         
         //check if placement is legal
         
@@ -52,33 +40,38 @@ public:
             
         }
 
-		
+	return;	
 	
-	}
-	
-	void printBoard(){
+}
+
+void Board::printBoard(){
 		//print rows one by one
+    cout << "made it into printboard";
+        for (int i = 0; i<sizeX; i++){
+            
+            for(int j = 0; j < sizeY; j++){
+                
+                if(&gameGraph[i][j] != NULL){
+                    
+                    cout<< "0";
+                    
+                }
+            }
+        }
 	}
-	
-	string exportBoardState(){
+
+	string Board::exportBoardState(){
 		//need to find best format for exporting, needs to be quick to deliver to ai
+		return "";
 	}
 	
-	int calcScore(){
-		
-		
-		
-		
-		
-		
-	}
-	
-};
+	int Board::calcScore(){
+
+		return 0;
+	};
 
 
-
-
-
+#endif
 
 
 

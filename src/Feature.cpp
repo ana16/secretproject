@@ -14,7 +14,7 @@ class Feature{
 private:
 
 	string name;
-	int tileCoordsX[];
+	int tileCoordsX[80];
 	bool isComplete;
 	int scoringInt;
 	int owner;
@@ -23,7 +23,7 @@ private:
 	
 
 public:
-	
+	Feature() {};
 	string getName(){
 		return name;
 	}
@@ -51,7 +51,7 @@ public:
 };
 
 
-class Field : Feature{
+class Field : public Feature{
 private:
 	
 	
@@ -65,7 +65,7 @@ public:
 	
 };
 
-class Road : Feature{
+class Road : public Feature{
 private:
 	
 	
@@ -78,7 +78,7 @@ public:
 	
 	
 };
-class City : Feature{
+class City : public Feature{
 private:
 	
 	
@@ -91,7 +91,7 @@ public:
 	
 	
 };
-class Monastery : Feature{
+class Monastery : public Feature{
 private:
 	
 	
@@ -106,7 +106,7 @@ public:
 };
 
 
-
+/*
 int main(){
 	
 	Field hello;
@@ -116,7 +116,7 @@ int main(){
 	
 	return 0;
 };
-
+*/
 
 
 

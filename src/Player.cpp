@@ -13,7 +13,7 @@ private:
 	int meepleCount;
 	
 public:
-	
+	Player(){};
 	void updateScore(int num){
 		score += num;
 	}
