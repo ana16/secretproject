@@ -13,21 +13,44 @@ private:
 	//consider making this an array of Features
 	//[regions,center,amt,animal]
 	
-	// Feature* northEntity;
-	// Feature* southEntity;
-	// Feature* eastEntity;
-	// Feature* westEntity;
+	//   Feature* northEntity;
+	//   Feature* southEntity;
+	//   Feature* eastEntity;
+	//   Feature* westEntity;
 	// Feature* neEntity;
 	// Feature* nwEntity;
 	// Feature* seEntity;
 	// Feature* swEntity;
 	// Feature* centerEntity;
 	Feature* Features[15];
+    
+
+
+    
 	int animal;
+
 	
 public:
-	Tile() {};
+    
+    int xPos;
+    int yPos;
+    int isEmpty;
+    Tile* North;
+    Tile* East;
+    Tile* South;
+    Tile* West;
+    
+    
+	Tile() {
+        North = South = East = West = 0;
+        xPos = 1;
+        yPos = 1;
+        isEmpty=1;
+           
+    };
 	Tile(int featureInput[]){
+        isEmpty=0;
+		North = South = East = West = 0;
 		Feature positionArr [15];
 		Feature* toBeAdded;
         
