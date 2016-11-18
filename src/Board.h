@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <iostream>
 
-//#include "Feature.cpp"
-//#include "Deck.cpp"
+#include "Feature.cpp"
+#include "Deck.cpp"
 #include "Tile.cpp"
 #include "Player.cpp"
 
@@ -31,15 +31,15 @@ public:
 
 private:
 
-    Tile gameGraph[][80];
-	Feature fields[];
-	Feature cities[];
-	Feature roads[];
-	Feature monasteries[];
+    Tile gameGraph[80][80];
+	Feature fields[10];
+	Feature cities[10];
+	Feature roads[10];
+	Feature monasteries[10];
 	bool turn;
 	Player Player1;
 	Player Player2;
-    loc openLocArray[];
+    loc openLocArray[100];
     int sizeX;
     int sizeY;
 		
@@ -50,7 +50,7 @@ inline Board::Board( )          // constructor
     sizeX=80;
     sizeY=80;
     cout << "in constructor \n";
-    turn = true;                // loc refers to the next empty location
+    turn = true;                
    
 }
 

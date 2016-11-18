@@ -1,8 +1,9 @@
 #include <iostream>
 #include "Feature.cpp"
 #include "Tile.cpp"
-
+#include <string>
 #include <stack>
+#include <vector>
 
 
 using namespace std;
@@ -16,9 +17,12 @@ private:
 	stack<Tile> tileStack;
 	int size;
 	
+	
 public:
 	
-	Deck(){
+	Deck() {};
+	void pop();
+	int getSize();
 	
 //0-field(jungle), 1-city(lake), 2-road(gametrail), 3-monestary(den)
 	int type[4] = {0, 1, 2, 3};
@@ -26,16 +30,15 @@ public:
 //0-none, 1-boar, 2-buffalo, 3- deer
 	int animal[4] = {0, 1, 2, 3};
 
-	Deck(String features[]){
+	Deck(int features[]) {};
 		
 //R1 - R12: starting with upper left corner, going clockwise
 	//R1-R12, center, amount of tile, animal
 
 
-	}
 //went by column
 	
-	int tZero[15] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0];
+	int tZero[15] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
 	/*int t1[15] = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0];
 	int t2[15] = [0, 2, 0, 1, 1, 1, 0, 0, 0, 0, 2, 0, 2, 1, 0];
 	int t3[15] = [0, 2, 0, 1, 1, 1, 0, 2, 0, 0, 2, 0, 2, 1, 0];
@@ -69,16 +72,16 @@ public:
 	int t24[15] = [0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 2, 0, 2, 4, 0];
 	int t25[15] = [0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0];
 	int t26[15] = [0, 2, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 0]; */
-	}
+};
 	
-	Tile pop(){
+	 void Deck::pop(){
 		return tileStack.pop();
 	}
 	
-	int getSize(){
+	int Deck::getSize(){
 		return tileStack.size();
 	}
-};
+
 
 
 

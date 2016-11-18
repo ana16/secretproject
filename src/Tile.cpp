@@ -1,3 +1,6 @@
+#ifndef TILE_HEADER
+#define TILE_HEADER
+
 #include <iostream>
 #include "Feature.cpp"
 
@@ -19,11 +22,11 @@ private:
 	// Feature* seEntity;
 	// Feature* swEntity;
 	// Feature* centerEntity;
-	Feature* Features[];
+	Feature* Features[15];
 	int animal;
 	
 public:
-	
+	Tile() {};
 	Tile(int featureInput[]){
 		Feature positionArr [15];
 		Feature* toBeAdded;
@@ -33,31 +36,35 @@ public:
 		for(int i = 0; i < 12; i++){
 			if(featureInput[i] == 0){
 				toBeAdded = new Field();
+                cout << "added field\n";
 			}
 			else if(featureInput[i] == 1){
 				toBeAdded = new City;
+                cout <<"added city\n";
 			}
 			else if(featureInput[i] == 2){
 				toBeAdded = new Road;
+                cout <<"added road\n";
 			}
 			else if(featureInput[i] == 3){
 				toBeAdded = new Monastery;
+                cout <<"added monastery\n";
 			}
 			Features[i] = toBeAdded;
 		}
 		
-		animal = featureInput[14];
+		//animal = featureInput[14];
 		
 		toBeAdded = NULL;//not sure if necessary
 		delete toBeAdded; //Not sure if this removes last pointer or deleted pointer variable.
-	}
+	};
 	
 	void rotateR(){
 		//
-	}
+	};
 	void rotateL(){
-		
-	}
+		//
+	};
 	
     
 	
@@ -65,6 +72,7 @@ public:
 	
 };
 
+#endif
 
 
 

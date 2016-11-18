@@ -12,6 +12,7 @@ using namespace std;
 int main(){
      Board myBoard;
      myBoard.addTile();
+     myBoard.printBoard();
     
     return 0;
 }
@@ -24,10 +25,11 @@ void Board::addTile(){
 		//pop tile from stack
         
         Tile firstTile = Tile(test);
-        cout << "Tile has been accessed";
+        cout << "Tile has been accessed\n";
         //check available positions on board from array
         gameGraph[25][25] = firstTile;
-        cout << "Tile has been placed";
+        cout << "Tile has been placed\n";
+        
         //check if placement is legal
         
         //place tile and connect the sides 
@@ -51,20 +53,21 @@ void Board::printBoard(){
                 
                 if(&gameGraph[i][j] != NULL){
                     
-                    cout<< "write something here";
+                    cout<< "0";
                     
                 }
             }
         }
 	}
 
-	string exportBoardState(){
+	string Board::exportBoardState(){
 		//need to find best format for exporting, needs to be quick to deliver to ai
+		return "";
 	}
 	
-	int calcScore(){
+	int Board::calcScore(){
 
-		
+		return 0;
 	};
 
 

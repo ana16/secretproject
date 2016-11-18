@@ -14,7 +14,7 @@ class Feature{
 private:
 
 	string name;
-	int tileCoordsX[];
+	int tileCoordsX[80];
 	bool isComplete;
 	int scoringInt;
 	int owner;
@@ -23,7 +23,7 @@ private:
 	
 
 public:
-	
+	Feature() {};
 	string getName(){
 		return name;
 	}
