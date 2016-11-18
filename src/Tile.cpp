@@ -32,16 +32,16 @@ public:
         
 		for(int i = 0; i < 12; i++){
 			if(featureInput[i] == 0){
-				toBeAdded = new Field;
+				toBeAdded = new Field();
 			}
 			else if(featureInput[i] == 1){
-				positionArr[i] = new City;
+				toBeAdded = new City;
 			}
 			else if(featureInput[i] == 2){
-				positionArr[i] = new Road;
+				toBeAdded = new Road;
 			}
 			else if(featureInput[i] == 3){
-				positionArr[i] = new Monastery;
+				toBeAdded = new Monastery;
 			}
 			Features[i] = toBeAdded;
 		}
@@ -59,6 +59,7 @@ public:
 		
 	}
 	
+    
 	
 	
 	
