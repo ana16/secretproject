@@ -28,13 +28,7 @@ private:
 	
 public:
 	
-<<<<<<< HEAD
 	Deck{
-=======
-	Deck() {};
-	Tile pop();
-	int getSize();
->>>>>>> origin/mattdev
 	
 //0-field(jungle), 1-city(lake), 2-road(gametrail), 3-monestary(den)
 	int type[4] = {0, 1, 2, 3};
@@ -125,7 +119,6 @@ public:
 	int t27[12] = [2, 1, 1, 1, 0, 0, 1, 1, 1, 2, 2, 27];
 	}
 	
-<<<<<<< HEAD
 	Tile pop(){
 		return tileStack.pop();
 	}
@@ -134,16 +127,6 @@ public:
 		return tileStack.size();
 	}
 };
-=======
-	 /*void Deck::pop(){
-		return tileStack.pop();
-	}*/
-	/*int Deck::getSize(){
-		return tileStack.size();
-	}*/
-	
-
->>>>>>> origin/mattdev
 
 
 
