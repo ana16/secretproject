@@ -21,7 +21,7 @@ private:
 public:
 	
 	Deck() {};
-	void pop();
+	Tile pop();
 	int getSize();
 	
 //0-field(jungle), 1-city(lake), 2-road(gametrail), 3-monestary(den)
@@ -74,13 +74,13 @@ public:
 	int t26[15] = [0, 2, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 0]; */
 };
 	
-	 void Deck::pop(){
+	 /*void Deck::pop(){
 		return tileStack.pop();
-	}
-	
-	int Deck::getSize(){
+	}*/
+	/*int Deck::getSize(){
 		return tileStack.size();
-	}
+	}*/
+	
 
 
 

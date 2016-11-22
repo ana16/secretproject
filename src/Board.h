@@ -27,6 +27,7 @@ public:
         int x;
         int y;
     };
+    void availPosAroundTile(Tile);
     
 
 private:
@@ -39,7 +40,7 @@ private:
 	bool turn;
 	Player Player1;
 	Player Player2;
-    loc openLocArray[100];
+    vector<loc> openLocVector;
     int sizeX;
     int sizeY;
 		
