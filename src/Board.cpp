@@ -1,18 +1,19 @@
 #ifndef Board_h
 #define Board_h
-
+#include <vector>
 #include <iostream>
 #include "Board.h"
-
+#include <typeinfo>
 
 using namespace std;
 
 
 
 int main(){
-     Board myBoard;
-     myBoard.addTile();
-     myBoard.printBoard();
+    Board myBoard;
+    myBoard.addTile();
+    myBoard.printBoard();
+    
     
     return 0;
 }
@@ -27,10 +28,15 @@ void Board::addTile(){
         
         Tile firstTile = Tile(test);
         cout << "Tile has been accessed\n";
-        //check available positions on board from array
-        gameGraph[25][25] = firstTile;
+       
+        gameGraph[40][40] = firstTile;
         cout << "Tile has been placed\n";
-        
+        firstTile.xPos = 40;
+        firstTile.yPos = 40;
+            
+        //check available positions on board from array
+        availPosAroundTile(firstTile);
+            
         //check if placement is legal
         
         //place tile and connect the sides 
@@ -47,14 +53,14 @@ void Board::addTile(){
 
 void Board::printBoard(){
 		//print rows one by one
-    cout << "made it into printboard";
+    cout << "made it into printboard\n";
         for (int i = 0; i<sizeX; i++){
             
             for(int j = 0; j < sizeY; j++){
                 
-                if(&gameGraph[i][j] != NULL){
+                if(gameGraph[i][j].isEmpty==0){
                     
-                    cout<< "0";
+                    cout<< i << ","<< j << "is full";
                     
                 }
             }
@@ -69,8 +75,60 @@ void Board::printBoard(){
 	int Board::calcScore(){
 
 		return 0;
-	};
+	}
+    
+    void Board::availPosAroundTile(Tile tile){
 
+		if (tile.North == NULL) {
+			int x = tile.xPos;
+			int y = tile.yPos;
+
+			loc mypoint;
+			mypoint.x = x-1;
+			mypoint.y = y;
+
+			openLocVector.push_back(mypoint);
+
+		}
+		if (tile.East == NULL) {
+			int x = tile.xPos;
+			int y = tile.yPos;
+
+			loc mypoint;
+			mypoint.x = x;
+			mypoint.y = y+1;
+
+			openLocVector.push_back(mypoint);
+
+		}
+		if (tile.South == NULL) {
+			int x = tile.xPos;
+			int y = tile.yPos;
+
+			loc mypoint;
+			mypoint.x = x+1;
+			mypoint.y = y;
+
+			openLocVector.push_back(mypoint);
+
+		}
+		if (tile.West == NULL) {
+			int x = tile.xPos;
+			int y = tile.yPos;
+
+			loc mypoint;
+			mypoint.x = x;
+			mypoint.y = y-1;
+
+			openLocVector.push_back(mypoint);
+
+		}
+    
+		cout << "Board has :" << openLocVector.size() << " elements\n";
+
+    }
+
+    
 
 #endif
 
