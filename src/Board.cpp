@@ -21,7 +21,8 @@ void Board::addTile(){
         
         if(turn){
         //ai will rotate for us, we just need to place it, keeps api simple
-        int test [15] = {0, 2, 0, 1, 1, 1, 0, 2, 0, 0, 0, 0, 2, 3, 0};
+        int test1 [15] = {0, 2, 0, 1, 1, 1, 0, 2, 0, 0, 0, 0, 2, 3, 0};
+        int test2 [15];
 		//pop tile from stack
         
         Tile firstTile = Tile(test);
