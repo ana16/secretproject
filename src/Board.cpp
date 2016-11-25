@@ -5,6 +5,8 @@
 #include "Board.h"
 #include <typeinfo>
 
+#include <fstream>
+
 using namespace std;
 
 
@@ -12,7 +14,9 @@ using namespace std;
 int main(){
     Board myBoard;
     myBoard.addTile();
-    myBoard.printBoard();
+    // myBoard.printBoard();
+    
+    myBoard.exportBoardState();
     
     
     return 0;
@@ -22,20 +26,24 @@ void Board::addTile(){
         
         if(turn){
         //ai will rotate for us, we just need to place it, keeps api simple
-        int test1 [15] = {0, 2, 0, 1, 1, 1, 0, 2, 0, 0, 0, 0, 2, 3, 0};
-        int test2 [15];
+        int test1 [15] = {2, 2, 1, 2, 0, 0, 0, 0, 2, 1, 0, 3};
+        int test2 [15] = {0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 4};
 		//pop tile from stack
         
-        Tile firstTile = Tile(test);
+        Tile firstTile = Tile(test1);
+        Tile secondTile = Tile(test2);
         cout << "Tile has been accessed\n";
        
         gameGraph[40][40] = firstTile;
+        gameGraph[40][41] = secondTile;
         cout << "Tile has been placed\n";
         firstTile.xPos = 40;
         firstTile.yPos = 40;
-            
+        secondTile.xPos = 40;
+        secondTile.yPos = 41;
+        
         //check available positions on board from array
-        availPosAroundTile(firstTile);
+        // availPosAroundTile(firstTile);
             
         //check if placement is legal
         
@@ -69,6 +77,45 @@ void Board::printBoard(){
 
 	string Board::exportBoardState(){
 		//need to find best format for exporting, needs to be quick to deliver to ai
+		
+//		cout << "1\n";
+		ofstream myFile;
+		myFile.open("../graphics/exportBoard.txt");
+//		myFile << "what what";
+		// myFile.close();
+		
+//		cout << "2\n";
+		
+		for(int i = 0; i < 80; i++){
+			for(int j = 0; j < 80; j++){
+				
+//				cout << "3\n";
+				
+				if(gameGraph[i][j].isEmpty == 1){
+					
+					 myFile << "0;";
+					
+					
+				}
+				else{
+					
+					myFile << gameGraph[i][j].exportTileInfo() << ";";
+					
+					
+				}
+				
+				
+			}
+			myFile << "\n";
+			
+			
+			
+		}
+		
+		
+		
+		
+		
 		return "";
 	}
 	
