@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Board.h"
 #include <typeinfo>
+#include "Deck.cpp"
 
 #include <fstream>
 
@@ -12,13 +13,16 @@ using namespace std;
 
 
 int main(){
-    Board myBoard;
-    myBoard.addTile();
-    // myBoard.printBoard();
-    
-    myBoard.exportBoardState();
-    
-    
+//    Board myBoard;
+//    myBoard.addTile();
+//    // myBoard.printBoard();
+//
+//    myBoard.exportBoardState();
+
+	cout << "main in board\n";
+	Deck myDeck;
+
+
     return 0;
 }
 

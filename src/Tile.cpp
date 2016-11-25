@@ -26,7 +26,7 @@ private:
 	// Feature* centerEntity;
 	Feature* Features[9];
 	int animalCount[5];
-	int tileNum;
+
     int rotations;
 
 
@@ -36,6 +36,7 @@ private:
 	
 public:
 	
+	int tileNum;
 	//make these private asap, make access functions
 	Tile* North;
     Tile* South;
