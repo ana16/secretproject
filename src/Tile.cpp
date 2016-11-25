@@ -2,6 +2,8 @@
 #define TILE_HEADER
 
 #include <iostream>
+#include <sstream>
+#include <string>
 #include "Feature.cpp"
 
 
@@ -22,8 +24,10 @@ private:
 	// Feature* seEntity;
 	// Feature* swEntity;
 	// Feature* centerEntity;
-	Feature* Features[15];
-    
+	Feature* Features[9];
+	int animalCount[5];
+	int tileNum;
+    int rotations;
 
 
     
@@ -31,21 +35,22 @@ private:
 
 	
 public:
-    
-    int xPos;
-    int yPos;
-    int isEmpty;
-    Tile* North;
-    Tile* East;
+	
+	//make these private asap, make access functions
+	Tile* North;
     Tile* South;
+    Tile* East;
     Tile* West;
-    
+	int isEmpty;
+	int xPos;
+    int yPos;
     
 	Tile() {
         North = South = East = West = 0;
         xPos = 1;
         yPos = 1;
         isEmpty=1;
+        rotations = 0;
            
     };
 	Tile(int featureInput[]){
@@ -56,7 +61,7 @@ public:
         
         toBeAdded = positionArr;
         
-		for(int i = 0; i < 12; i++){
+		for(int i = 0; i < 9; i++){
 			if(featureInput[i] == 0){
 				toBeAdded = new Field();
                 cout << "added field\n";
@@ -76,6 +81,14 @@ public:
 			Features[i] = toBeAdded;
 		}
 		
+		//animal is 10
+		animalCount[featureInput[10]]++;
+		
+		tileNum = featureInput[11];
+		
+		rotations = 0;
+
+		
 		//animal = featureInput[14];
 		
 		toBeAdded = NULL;//not sure if necessary
@@ -89,6 +102,29 @@ public:
 		//
 	};
 	
+	string exportTileInfo(){
+		
+		string outputString;
+		string tempString;
+		ostringstream conversion;
+
+//		if(tileNum < 10){
+//			conversion << 0;
+//		}
+		conversion << tileNum;
+		outputString.append(conversion.str());
+		conversion.str("");
+
+		conversion << ",";
+		outputString.append(conversion.str());
+		conversion.str("");
+
+		conversion << rotations;
+		outputString.append(conversion.str());
+//		cout << outputString << endl;
+
+		return outputString;
+	}
     
 	
 	
