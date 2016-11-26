@@ -20,7 +20,7 @@ Deck::Deck(){
 	t[18][9]--; //decrease starting tile by one, we're gonna add at the end, to place at top of stack
 
 
-//		Tile* newTile;
+		Tile* newTile;
 	while(true){
 
 		int randNum = rand() % 28;
@@ -28,7 +28,7 @@ Deck::Deck(){
 
 		if(t[randNum][9] != 0){
 			t[randNum][9]--;
-			Tile newTile(t[randNum]);
+			newTile = new Tile(t[randNum]);
 			tileStack.push(newTile);
 		}
 		else{
@@ -43,18 +43,18 @@ Deck::Deck(){
 
 	}
 
-	Tile startingTile(t[18]);
-	tileStack.push(startingTile);
+	newTile = new Tile(t[18]);
+	tileStack.push(newTile);
 
-	Tile printer;
-	cout << "stacksize: " << tileStack.size() << endl;
-
-	int origStackSize = tileStack.size();
-	for(int i = 0; i < origStackSize; i++){
-		printer = tileStack.top();
-		cout << "i: " << i << ",  " << printer.tileNum << endl;
-		tileStack.pop();
-	}
+//	Tile printer;
+//	cout << "stacksize: " << tileStack.size() << endl;
+//
+//	int origStackSize = tileStack.size();
+//	for(int i = 0; i < origStackSize; i++){
+//		printer = tileStack.top();
+//		cout << "i: " << i << ",  " << printer.tileNum << endl;
+//		tileStack.pop();
+//	}
 
 	
 }
@@ -148,9 +148,9 @@ int t26[12] = [0, 2, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 0, 26];
 //	int t27[12] = {2, 1, 1, 1, 0, 0, 1, 1, 1, 2, 2, 27};
 
 
-Tile Deck::pop(){
+Tile* Deck::pop(){
 
-	Tile returnVal = tileStack.top();
+	Tile* returnVal = tileStack.top();
 	
 	tileStack.pop();
 	

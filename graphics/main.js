@@ -14,7 +14,7 @@ var yDebug;
 var dragContainer = new createjs.Container();
 var global_mouseDownBool = false;
 var global_mouseUpBool = false;
-var global_currentCardOverlayForDrag = new card();
+// var global_currentCardOverlayForDrag = new card();
 
 
 

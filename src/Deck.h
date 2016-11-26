@@ -16,7 +16,7 @@ class Deck{
 
 private:
 
-	stack<Tile> tileStack;
+	stack<Tile*> tileStack;
 	int size;
 	int t[28][12] =
 	{		{0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0},
@@ -61,7 +61,7 @@ public:
 
 	Deck();
 
-	Tile pop();
+	Tile* pop();
 
 	int getSize();
 };

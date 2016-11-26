@@ -31,8 +31,9 @@ private:
 
 
 public:
+
 	Feature();
-	std::string getName();
+	virtual std::string getName();
 
 	//make tile class then put tileList here
 
@@ -50,14 +51,14 @@ public:
 class Field : public Feature{
 private:
 
-
+	std::string name;
 
 
 
 public:
 
-
-
+Field();
+std::string getName();
 
 };
 
@@ -65,39 +66,39 @@ class Road : public Feature{
 private:
 
 
-
+	std::string name;
 
 
 public:
 
-
-
+Road();
+std::string getName();
 
 };
 class City : public Feature{
 private:
 
-
+	std::string name;
 
 
 
 public:
 
-
-
+City();
+std::string getName();
 
 };
 class Monastery : public Feature{
 private:
 
 
-
+	std::string name;
 
 
 public:
 
-
-
+Monastery();
+std::string getName();
 
 };
 

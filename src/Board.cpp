@@ -18,8 +18,63 @@ int main(){
 //
 //    myBoard.exportBoardState();
 
-	cout << "main in board\n";
-	Deck myDeck;
+//	cout << "main in board\n";
+//	Deck myDeck;
+
+	Board myBoard;
+
+	int t0[12] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0};
+	int t1[12] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1};
+	int t5[12] = {0, 1, 1, 1, 0, 0, 1, 1, 0, 4, 0, 5};
+	int t4[12] = {0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 4};
+	int t13[12] = {0, 0, 1, 1, 0, 0, 0, 0, 1, 3, 0, 13};
+	int t17[12] = {1, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0, 17};
+
+	Tile* tempTile = new Tile(t1);
+//	tempTile->printTileFeatures();
+
+	myBoard.addTile(tempTile,40,40);
+
+	tempTile = new Tile(t5);
+
+	myBoard.addTile(tempTile,41,40);
+
+	tempTile = new Tile(t4);
+
+	myBoard.addTile(tempTile,41,41);
+
+	tempTile = new Tile(t13);
+
+	myBoard.addTile(tempTile,42,40);
+
+	tempTile = new Tile(t17);
+
+	myBoard.addTile(tempTile,41,39);
+
+	myBoard.getTile(40,40)->printTileFeatures();
+	cout << endl;
+	myBoard.getTile(41,40)->printTileFeatures();
+	cout << endl;
+	myBoard.getTile(41,41)->printTileFeatures();
+	cout << endl;
+	myBoard.getTile(42,40)->printTileFeatures();
+	cout << endl;
+	myBoard.getTile(41,39)->printTileFeatures();
+
+
+//	Tile* tempTile = myDeck.pop();
+//
+//	myBoard.addTile(tempTile,40,40);
+//
+//	tempTile = myDeck.pop();
+//
+//	myBoard.addTile(tempTile,40,41);
+//
+//	tempTile = myDeck.pop();
+//
+//	myBoard.addTile(tempTile,40,42);
+
+	myBoard.exportBoardState();
 
 
     return 0;
@@ -33,33 +88,161 @@ Tile* Board::getTile(int x, int y){
 }
 
 void Board::addTile(Tile* tileToAdd,int x,int y){
-        
+
 
 	gameGraph[x][y] = tileToAdd;
+
+
+
+	int checker = 0;
+
+	//check west
+	if(gameGraph[x-1][y] != NULL){
+
+		//for the tiles with cities on the corner, make the corner null. These corners always get completed or extended by another city and won't have an effect on computation.
+
+		//ne
+		//add this new tile to west tile
+		checker = gameGraph[x-1][y]->addToFeature(4,tileToAdd);
+		if(checker == 1 && gameGraph[x][y-1]->getFeature(4) != tileToAdd->getFeature(5)){
+			tileToAdd->repointFeature(gameGraph[x-1][y]->getFeature(4),5);
+		}
+
+
+		checker = 0;
+
+		//E
+		checker = gameGraph[x-1][y]->addToFeature(2,tileToAdd);
+		if(checker == 1 && gameGraph[x][y-1]->getFeature(2) != tileToAdd->getFeature(3)){
+			tileToAdd->repointFeature(gameGraph[x-1][y]->getFeature(2),3);
+		}
+
+
+
+		checker = 0;
+
+		//se
+		checker = gameGraph[x-1][y]->addToFeature(6,tileToAdd);
+		if(checker == 1 && gameGraph[x][y-1]->getFeature(6) != tileToAdd->getFeature(7)){
+			tileToAdd->repointFeature(gameGraph[x-1][y]->getFeature(6),7);
+		}
+
+		checker = 0;
+
+	}
 
 	//for reference
 	//N, S, E, W, ne, nw, se, sw, center, tile amount, animal, tile #
 
-	//check west
-	if(gameGraph[x-1][y]->isEmpty != 1){
+	//check north
+	if(gameGraph[x][y+1] != NULL){
 
-		//ne
-		gameGraph[x-1][y]->addToFeature(4,tileToAdd);
-		delete tileToAdd->getFeature(5);
-		tileToAdd->repointFeature(gameGraph[x-1][y]->getFeature(4),5);
-
-		//E
-		gameGraph[x-1][y]->addToFeature(3,tileToAdd);
-		delete tileToAdd->getFeature(4);
-		tileToAdd->repointFeature(gameGraph[x-1][y]->getFeature(3),4);
+		//for the tiles with cities on the corner, make the corner null. These corners always get completed or extended by another city and won't have an effect on computation.
 
 		//se
-		gameGraph[x-1][y]->addToFeature(6,tileToAdd);
-		delete tileToAdd->getFeature(7);
-		tileToAdd->repointFeature(gameGraph[x-1][y]->getFeature(6),7);
+		//add this new tile to west tile
+		checker = gameGraph[x][y+1]->addToFeature(6,tileToAdd);
+		if(checker == 1 && gameGraph[x][y-1]->getFeature(6) != tileToAdd->getFeature(4)){
+			tileToAdd->repointFeature(gameGraph[x][y+1]->getFeature(6),4);
+		}
+
+
+		checker = 0;
+
+		//S
+		checker = gameGraph[x][y+1]->addToFeature(1,tileToAdd);
+		if(checker == 1 && gameGraph[x][y-1]->getFeature(1) != tileToAdd->getFeature(0)){
+			tileToAdd->repointFeature(gameGraph[x][y+1]->getFeature(1),0);
+		}
+
+
+
+		checker = 0;
+
+		//sw
+		checker = gameGraph[x][y+1]->addToFeature(7,tileToAdd);
+		if(checker == 1 && gameGraph[x][y-1]->getFeature(7) != tileToAdd->getFeature(5)){
+			tileToAdd->repointFeature(gameGraph[x][y+1]->getFeature(7),5);
+		}
+
+		checker = 0;
 
 	}
 
+	//for reference
+	//N, S, E, W, ne, nw, se, sw, center, tile amount, animal, tile #
+
+	//check south
+	if(gameGraph[x][y-1] != NULL){
+
+		//for the tiles with cities on the corner, make the corner null. These corners always get completed or extended by another city and won't have an effect on computation.
+
+		//ne
+		//add this new tile to west tile
+		checker = gameGraph[x][y-1]->addToFeature(4,tileToAdd);
+		if(checker == 1 && gameGraph[x][y-1]->getFeature(4) != tileToAdd->getFeature(6)){
+			tileToAdd->repointFeature(gameGraph[x][y-1]->getFeature(4),6);
+		}
+
+
+		checker = 0;
+
+		//N
+		checker = gameGraph[x][y-1]->addToFeature(0,tileToAdd);
+		if(checker == 1 && gameGraph[x][y-1]->getFeature(0) != tileToAdd->getFeature(1)){
+			tileToAdd->repointFeature(gameGraph[x][y-1]->getFeature(0),1);
+		}
+
+
+
+		checker = 0;
+
+		//nw
+		checker = gameGraph[x][y-1]->addToFeature(5,tileToAdd);
+		if(checker == 1 && gameGraph[x][y-1]->getFeature(5) != tileToAdd->getFeature(7)){
+			tileToAdd->repointFeature(gameGraph[x][y-1]->getFeature(5),7);
+		}
+
+		checker = 0;
+
+	}
+	//for reference
+	//N, S, E, W, ne, nw, se, sw, center, tile amount, animal, tile #
+
+	//check East
+	if(gameGraph[x+1][y] != NULL){
+
+		//for the tiles with cities on the corner, make the corner null. These corners always get completed or extended by another city and won't have an effect on computation.
+
+		//nw
+		//add this new tile to west tile
+		checker = gameGraph[x+1][y]->addToFeature(5,tileToAdd);
+		if(checker == 1 && gameGraph[x][y-1]->getFeature(5) != tileToAdd->getFeature(4)){
+			tileToAdd->repointFeature(gameGraph[x+1][y]->getFeature(5),4);
+		}
+
+
+		checker = 0;
+
+		//W
+		checker = gameGraph[x+1][y]->addToFeature(3,tileToAdd);
+		if(checker == 1 && gameGraph[x][y-1]->getFeature(3) != tileToAdd->getFeature(2)){
+			tileToAdd->repointFeature(gameGraph[x+1][y]->getFeature(3),2);
+		}
+
+
+
+		checker = 0;
+
+		//sw
+		checker = gameGraph[x+1][y]->addToFeature(7,tileToAdd);
+		if(checker == 1 && gameGraph[x][y-1]->getFeature(7) != tileToAdd->getFeature(6)){
+			tileToAdd->repointFeature(gameGraph[x+1][y]->getFeature(7),6);
+		}
+
+		checker = 0;
+
+	}
 
 
 
@@ -119,7 +302,7 @@ void Board::printBoard(){
 		
 //		cout << "1\n";
 		ofstream myFile;
-		myFile.open("../graphics/exportBoard.txt");
+		myFile.open("exportBoard.txt");
 //		myFile << "what what";
 		// myFile.close();
 		
@@ -130,7 +313,7 @@ void Board::printBoard(){
 				
 //				cout << "3\n";
 				
-				if(gameGraph[i][j]->isEmpty == 1){
+				if(gameGraph[j][i] == NULL){
 					
 					 myFile << "0;";
 					
@@ -138,7 +321,7 @@ void Board::printBoard(){
 				}
 				else{
 					
-					myFile << gameGraph[i][j]->exportTileInfo() << ";";
+					myFile << gameGraph[j][i]->exportTileInfo() << ";";
 					
 					
 				}
