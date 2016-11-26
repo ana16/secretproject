@@ -27,43 +27,72 @@ int main(){
 
 Tile* Board::getTile(int x, int y){
 
-	return &gameGraph[x][y];
+	return gameGraph[x][y];
 
 
 }
 
-void Board::addTile(){
+void Board::addTile(Tile* tileToAdd,int x,int y){
         
-        if(turn){
-        //ai will rotate for us, we just need to place it, keeps api simple
-        int test1 [15] = {2, 2, 1, 2, 0, 0, 0, 0, 2, 1, 0, 3};
-        int test2 [15] = {0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 4};
-		//pop tile from stack
-        
-        Tile firstTile = Tile(test1);
-        Tile secondTile = Tile(test2);
-        cout << "Tile has been accessed\n";
-       
-        gameGraph[40][40] = firstTile;
-        gameGraph[40][41] = secondTile;
-        cout << "Tile has been placed\n";
-        firstTile.xPos = 40;
-        firstTile.yPos = 40;
-        secondTile.xPos = 40;
-        secondTile.yPos = 41;
-        
-        //check available positions on board from array
-        // availPosAroundTile(firstTile);
-            
-        //check if placement is legal
-        
-        //place tile and connect the sides 
-            
-        //check which meeple placements are legal
-            
-        //if it is city/road connect it to a feature
-            
-        }
+
+	gameGraph[x][y] = tileToAdd;
+
+	//for reference
+	//N, S, E, W, ne, nw, se, sw, center, tile amount, animal, tile #
+
+	//check west
+	if(gameGraph[x-1][y]->isEmpty != 1){
+
+		//ne
+		gameGraph[x-1][y]->addToFeature(4,tileToAdd);
+		delete tileToAdd->getFeature(5);
+		tileToAdd->repointFeature(gameGraph[x-1][y]->getFeature(4),5);
+
+		//E
+		gameGraph[x-1][y]->addToFeature(3,tileToAdd);
+		delete tileToAdd->getFeature(4);
+		tileToAdd->repointFeature(gameGraph[x-1][y]->getFeature(3),4);
+
+		//se
+		gameGraph[x-1][y]->addToFeature(6,tileToAdd);
+		delete tileToAdd->getFeature(7);
+		tileToAdd->repointFeature(gameGraph[x-1][y]->getFeature(6),7);
+
+	}
+
+
+
+
+//        if(turn){
+//        //ai will rotate for us, we just need to place it, keeps api simple
+//        int test1 [15] = {2, 2, 1, 2, 0, 0, 0, 0, 2, 1, 0, 3};
+//        int test2 [15] = {0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 4};
+//		//pop tile from stack
+//
+//        Tile firstTile = Tile(test1);
+//        Tile secondTile = Tile(test2);
+//        cout << "Tile has been accessed\n";
+//
+//        gameGraph[40][40] = firstTile;
+//        gameGraph[40][41] = secondTile;
+//        cout << "Tile has been placed\n";
+//        firstTile.xPos = 40;
+//        firstTile.yPos = 40;
+//        secondTile.xPos = 40;
+//        secondTile.yPos = 41;
+//
+//        //check available positions on board from array
+//        // availPosAroundTile(firstTile);
+//
+//        //check if placement is legal
+//
+//        //place tile and connect the sides
+//
+//        //check which meeple placements are legal
+//
+//        //if it is city/road connect it to a feature
+//
+//        }
 
 	return;	
 	
@@ -76,7 +105,7 @@ void Board::printBoard(){
             
             for(int j = 0; j < sizeY; j++){
                 
-                if(gameGraph[i][j].isEmpty==0){
+                if(gameGraph[i][j]->isEmpty==0){
                     
                     cout<< i << ","<< j << "is full";
                     
@@ -101,7 +130,7 @@ void Board::printBoard(){
 				
 //				cout << "3\n";
 				
-				if(gameGraph[i][j].isEmpty == 1){
+				if(gameGraph[i][j]->isEmpty == 1){
 					
 					 myFile << "0;";
 					
@@ -109,7 +138,7 @@ void Board::printBoard(){
 				}
 				else{
 					
-					myFile << gameGraph[i][j].exportTileInfo() << ";";
+					myFile << gameGraph[i][j]->exportTileInfo() << ";";
 					
 					
 				}

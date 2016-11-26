@@ -19,7 +19,7 @@ public:
 	  
     Tile* getTile(int x, int y);
     Board();
-    void addTile();
+    void addTile(Tile* tileToAdd,int x,int y);
     void printBoard();
     string exportBoardState();
     int calcScore();
@@ -28,11 +28,12 @@ public:
         int y;
     };
     void availPosAroundTile(Tile);
+
     
 
 private:
 
-    Tile gameGraph[80][80];
+    Tile* gameGraph[80][80];
 	Feature fields[10];
 	Feature cities[10];
 	Feature roads[10];

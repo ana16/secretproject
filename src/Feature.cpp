@@ -22,8 +22,12 @@ bool Feature::getComplete(){
 	return 0;
 }
 
-int Feature::addTile(){
+int Feature::addTile(Tile* tileToAdd){
 	//was void, but I want to return a legality int
+
+	tileList.push_back(tileToAdd);
+
+
 }
 
 int Feature::getPotential(){

@@ -9,11 +9,18 @@
 #define FEATURE_H_
 
 #include <string>
+#include <vector>
+#include "Tile.h"
+
+using namespace std;
+
+class Tile;
 
 class Feature{
 
 private:
 
+	vector<Tile*> tileList;
 	std::string name;
 	int tileCoordsX[80];
 	bool isComplete;
@@ -31,7 +38,7 @@ public:
 
 	bool getComplete();
 
-	int addTile();
+	int addTile(Tile* tileToAdd);
 
 	int getPotential();
 

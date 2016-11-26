@@ -11,6 +11,8 @@
 #include <string>
 #include "Feature.h"
 
+class Feature;
+
 class Tile{
 
 private:
@@ -50,6 +52,11 @@ public:
 
 	Tile();
 	Tile(int featureInput[]);
+
+	void addToFeature(int featureNum,Tile* tileToAdd);
+	void repointFeature(Feature* featureInput,int index);
+
+	Feature* getFeature(int index);
 
 	void rotateR();
 	void rotateL();
