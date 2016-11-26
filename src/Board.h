@@ -5,9 +5,9 @@
 #include <stdlib.h>
 #include <iostream>
 
-#include "Feature.cpp"
-#include "Deck.cpp"
-#include "Tile.cpp"
+#include "Feature.h"
+#include "Deck.h"
+#include "Tile.h"
 #include "Player.cpp"
 
 using namespace std;
@@ -17,7 +17,7 @@ class Board{
     
 public:
 	  
-    
+    Tile* getTile(int x, int y);
     Board();
     void addTile();
     void printBoard();
