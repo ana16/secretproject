@@ -1,10 +1,9 @@
-#ifndef Board_h
-#define Board_h
+
 #include <vector>
 #include <iostream>
 #include "Board.h"
 #include <typeinfo>
-#include "Deck.cpp"
+#include "Deck.h"
 
 #include <fstream>
 
@@ -24,6 +23,13 @@ int main(){
 
 
     return 0;
+}
+
+Tile* Board::getTile(int x, int y){
+
+	return &gameGraph[x][y];
+
+
 }
 
 void Board::addTile(){
@@ -180,8 +186,6 @@ void Board::printBoard(){
     }
 
     
-
-#endif
 
 
 
