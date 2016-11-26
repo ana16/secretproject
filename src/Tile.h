@@ -28,7 +28,7 @@ private:
 	// Feature* seEntity;
 	// Feature* swEntity;
 	// Feature* centerEntity;
-	Feature* Features[9];
+	Feature* Features[9] = {NULL};
 	int animalCount[5];
 
     int rotations;
@@ -53,7 +53,7 @@ public:
 	Tile();
 	Tile(int featureInput[]);
 
-	void addToFeature(int featureNum,Tile* tileToAdd);
+	int addToFeature(int featureNum,Tile* tileToAdd);
 	void repointFeature(Feature* featureInput,int index);
 
 	Feature* getFeature(int index);
@@ -62,6 +62,8 @@ public:
 	void rotateL();
 
 	std::string exportTileInfo();
+
+	void printTileFeatures();
 
 
 };
