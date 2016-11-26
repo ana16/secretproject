@@ -3,7 +3,6 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include "Feature.h"
 #include "Tile.h"
 
 
@@ -86,12 +85,25 @@ std::string Tile::exportTileInfo(){
 }
 
 
+void Tile::addToFeature(int featureNum,Tile* tileToAdd){
+
+	Features[featureNum]->addTile(tileToAdd);
+
+}
+
+Feature* Tile::getFeature(int index){
+
+	return Features[index];
 
 
+}
 
 
+void Tile::repointFeature(Feature* featureInput, int index){
 
+	Features[index] = featureInput;
 
+}
 
 
 
