@@ -1,44 +1,98 @@
-#ifndef Board_h
-#define Board_h
 
+#include <vector>
 #include <iostream>
 #include "Board.h"
+#include <typeinfo>
+#include "Deck.h"
 
+#include <fstream>
 
 using namespace std;
 
 
 
 int main(){
-     Board myBoard;
-     myBoard.addTile();
-     myBoard.printBoard();
-    
+//    Board myBoard;
+//    myBoard.addTile();
+//    // myBoard.printBoard();
+//
+//    myBoard.exportBoardState();
+
+	cout << "main in board\n";
+	Deck myDeck;
+
+
     return 0;
 }
 
-void Board::addTile(){
+Tile* Board::getTile(int x, int y){
+
+	return gameGraph[x][y];
+
+
+}
+
+void Board::addTile(Tile* tileToAdd,int x,int y){
         
-        if(turn){
-        //ai will rotate for us, we just need to place it, keeps api simple
-        int test [15] = {0, 2, 0, 1, 1, 1, 0, 2, 0, 0, 0, 0, 2, 3, 0};
-		//pop tile from stack
-        
-        Tile firstTile = Tile(test);
-        cout << "Tile has been accessed\n";
-        //check available positions on board from array
-        gameGraph[25][25] = firstTile;
-        cout << "Tile has been placed\n";
-        
-        //check if placement is legal
-        
-        //place tile and connect the sides 
-            
-        //check which meeple placements are legal
-            
-        //if it is city/road connect it to a feature
-            
-        }
+
+	gameGraph[x][y] = tileToAdd;
+
+	//for reference
+	//N, S, E, W, ne, nw, se, sw, center, tile amount, animal, tile #
+
+	//check west
+	if(gameGraph[x-1][y]->isEmpty != 1){
+
+		//ne
+		gameGraph[x-1][y]->addToFeature(4,tileToAdd);
+		delete tileToAdd->getFeature(5);
+		tileToAdd->repointFeature(gameGraph[x-1][y]->getFeature(4),5);
+
+		//E
+		gameGraph[x-1][y]->addToFeature(3,tileToAdd);
+		delete tileToAdd->getFeature(4);
+		tileToAdd->repointFeature(gameGraph[x-1][y]->getFeature(3),4);
+
+		//se
+		gameGraph[x-1][y]->addToFeature(6,tileToAdd);
+		delete tileToAdd->getFeature(7);
+		tileToAdd->repointFeature(gameGraph[x-1][y]->getFeature(6),7);
+
+	}
+
+
+
+
+//        if(turn){
+//        //ai will rotate for us, we just need to place it, keeps api simple
+//        int test1 [15] = {2, 2, 1, 2, 0, 0, 0, 0, 2, 1, 0, 3};
+//        int test2 [15] = {0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 4};
+//		//pop tile from stack
+//
+//        Tile firstTile = Tile(test1);
+//        Tile secondTile = Tile(test2);
+//        cout << "Tile has been accessed\n";
+//
+//        gameGraph[40][40] = firstTile;
+//        gameGraph[40][41] = secondTile;
+//        cout << "Tile has been placed\n";
+//        firstTile.xPos = 40;
+//        firstTile.yPos = 40;
+//        secondTile.xPos = 40;
+//        secondTile.yPos = 41;
+//
+//        //check available positions on board from array
+//        // availPosAroundTile(firstTile);
+//
+//        //check if placement is legal
+//
+//        //place tile and connect the sides
+//
+//        //check which meeple placements are legal
+//
+//        //if it is city/road connect it to a feature
+//
+//        }
 
 	return;	
 	
@@ -46,14 +100,14 @@ void Board::addTile(){
 
 void Board::printBoard(){
 		//print rows one by one
-    cout << "made it into printboard";
+    cout << "made it into printboard\n";
         for (int i = 0; i<sizeX; i++){
             
             for(int j = 0; j < sizeY; j++){
                 
-                if(&gameGraph[i][j] != NULL){
+                if(gameGraph[i][j]->isEmpty==0){
                     
-                    cout<< "0";
+                    cout<< i << ","<< j << "is full";
                     
                 }
             }
@@ -62,16 +116,105 @@ void Board::printBoard(){
 
 	string Board::exportBoardState(){
 		//need to find best format for exporting, needs to be quick to deliver to ai
+		
+//		cout << "1\n";
+		ofstream myFile;
+		myFile.open("../graphics/exportBoard.txt");
+//		myFile << "what what";
+		// myFile.close();
+		
+//		cout << "2\n";
+		
+		for(int i = 0; i < 80; i++){
+			for(int j = 0; j < 80; j++){
+				
+//				cout << "3\n";
+				
+				if(gameGraph[i][j]->isEmpty == 1){
+					
+					 myFile << "0;";
+					
+					
+				}
+				else{
+					
+					myFile << gameGraph[i][j]->exportTileInfo() << ";";
+					
+					
+				}
+				
+				
+			}
+			myFile << "\n";
+			
+			
+			
+		}
+		
+		
+		
+		
+		
 		return "";
 	}
 	
 	int Board::calcScore(){
 
 		return 0;
-	};
+	}
+    
+    void Board::availPosAroundTile(Tile tile){
 
+		if (tile.North == NULL) {
+			int x = tile.xPos;
+			int y = tile.yPos;
 
-#endif
+			loc mypoint;
+			mypoint.x = x-1;
+			mypoint.y = y;
+
+			openLocVector.push_back(mypoint);
+
+		}
+		if (tile.East == NULL) {
+			int x = tile.xPos;
+			int y = tile.yPos;
+
+			loc mypoint;
+			mypoint.x = x;
+			mypoint.y = y+1;
+
+			openLocVector.push_back(mypoint);
+
+		}
+		if (tile.South == NULL) {
+			int x = tile.xPos;
+			int y = tile.yPos;
+
+			loc mypoint;
+			mypoint.x = x+1;
+			mypoint.y = y;
+
+			openLocVector.push_back(mypoint);
+
+		}
+		if (tile.West == NULL) {
+			int x = tile.xPos;
+			int y = tile.yPos;
+
+			loc mypoint;
+			mypoint.x = x;
+			mypoint.y = y-1;
+
+			openLocVector.push_back(mypoint);
+
+		}
+    
+		cout << "Board has :" << openLocVector.size() << " elements\n";
+
+    }
+
+    
 
 
 

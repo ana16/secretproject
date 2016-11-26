@@ -1,127 +1,45 @@
-#ifndef FEATURE_H
-#define FEATURE_H
 
 #include <iostream>
-// #include <string>
+//#include "Tile.cpp"
+ #include <string>
+#include "Feature.h"
 
 
 using namespace std;
 
 
-
-class Feature{
-	
-private:
-
-	string name;
-	int tileCoordsX[80];
-	bool isComplete;
-	int scoringInt;
-	int owner;
-	int potentialPoints;
-	//add meeple array here
-	
-
-public:
-	Feature() {};
-	string getName(){
-		return name;
-	}
-	
-	//make tile class then put tileList here
-	
-	bool getComplete(){
-		//check if feature is bounded
-		return 0;
-	}
-	
-	int addTile(){
-		//was void, but I want to return a legality int
-	}
-	
-	int getPotential(){
-		//very basic point potential
-	}
-	
-	void releaseMeeples(){
-		//return meeples to the players
-	}
-	
-	
-};
+Feature::Feature() {};
 
 
-class Field : public Feature{
-private:
-	
-	
-	
-	
-		
-public:
-	
-	
-	
-	
-};
+string Feature::getName(){
+	return name;
+}
 
-class Road : public Feature{
-private:
-	
-	
-	
-	
-		
-public:
-	
-	
-	
-	
-};
-class City : public Feature{
-private:
-	
-	
-	
-	
-		
-public:
-	
-	
-	
-	
-};
-class Monastery : public Feature{
-private:
-	
-	
-	
-	
-		
-public:
-	
-	
-	
-	
-};
+//make tile class then put tileList here
 
-
-/*
-int main(){
-	
-	Field hello;
-	Road fd;
-	City jdkfljs;
-	Monastery mojdfls;
-	
+bool Feature::getComplete(){
+	//check if feature is bounded
 	return 0;
-};
-*/
+}
+
+int Feature::addTile(Tile* tileToAdd){
+	//was void, but I want to return a legality int
+
+	tileList.push_back(tileToAdd);
+
+
+}
+
+int Feature::getPotential(){
+	//very basic point potential
+}
+
+void Feature::releaseMeeples(){
+	//return meeples to the players
+}
 
 
 
-
-#endif
 
 
 
