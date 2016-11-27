@@ -33,6 +33,7 @@ private:
 public:
 
 	Feature();
+	Feature(Tile* firstTile);
 	virtual std::string getName();
 
 	//make tile class then put tileList here
@@ -44,6 +45,10 @@ public:
 	int getPotential();
 
 	void releaseMeeples();
+
+	void changePointers(Feature* origPointer, Feature* newPointer);
+
+	int getTileListSize();
 
 };
 
@@ -58,6 +63,7 @@ private:
 public:
 
 Field();
+Field(Tile* startingTile);
 std::string getName();
 
 };
@@ -73,6 +79,7 @@ public:
 
 Road();
 std::string getName();
+Road(Tile* startingTile);
 
 };
 class City : public Feature{
@@ -85,6 +92,7 @@ private:
 public:
 
 City();
+City(Tile* startingTile);
 std::string getName();
 
 };
@@ -98,6 +106,7 @@ private:
 public:
 
 Monastery();
+Monastery(Tile* startingTile);
 std::string getName();
 
 };

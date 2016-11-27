@@ -91,7 +91,7 @@ $(document).ready(function(){
 		
 		
 		
-		alert(contents[1] != 0);
+		// alert(contents[1] != 0);
 		for(i = 0; i < 80; i++){
 			for(j = 0; j < 80; j++){
 				
@@ -102,12 +102,12 @@ $(document).ready(function(){
 					var myImage = new Image();
 					myImage.width = j*50;
 					myImage.height = i*50;
-					// myImage.alt = 90;
+					myImage.alt = 270*splitInstance[1];
 					var srcString = 't' + splitInstance[0] + '.png';
 					myImage.src = srcString;
 					// alphaOrNot = 1;
 					myImage.onload = handleImageLoad;
-					alert('shouldload: ' + i + 'and' + j);
+					// alert('shouldload: ' + i + 'and' + j + '  tilenum: ' + splitInstance[0]);
 					
 				}
 				
@@ -133,8 +133,12 @@ $(document).ready(function(){
             bitmap.scaleY = .1;
             bitmap.x = image.width;
             bitmap.y = image.height;
+            
+            bitmap.regX = 1050;
+            bitmap.regY = 750;
+            
             bitmap.rotation = image.alt;
-            alert("new bitmap at " + bitmap.y + ", " + bitmap.y)
+            // alert("new bitmap at " + bitmap.y + ", " + bitmap.y)
             
             // if(alphaOrNot == 1){
             // 	bitmap.alpha = 0;
