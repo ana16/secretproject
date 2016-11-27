@@ -28,8 +28,10 @@ public:
         int y;
     };
     void availPosAroundTile(Tile);
+    void updateAvailPos(int x, int y);
+    void printAvailPos();
 
-    
+    bool checkLegalMove(Tile* tile, int x, int y);
 
 private:
 
