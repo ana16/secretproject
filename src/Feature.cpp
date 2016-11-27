@@ -2,6 +2,7 @@
 #include <iostream>
 //#include "Tile.cpp"
  #include <string>
+#include <vector>
 #include "Feature.h"
 
 
@@ -13,6 +14,29 @@ Feature::Feature() {
 	name = "Feature";
 };
 
+Feature::Feature(Tile* firstTile){
+
+	addTile(firstTile);
+
+}
+
+void Feature::changePointers(Feature* origPointer, Feature* newPointer){
+
+	int sizeToUse = tileList.size();
+
+	for(int i = 0; i < sizeToUse; i++){
+		tileList[i]->repointPointers(origPointer, newPointer);
+		newPointer->addTile(tileList[i]);
+	}
+
+
+}
+
+int Feature::getTileListSize(){
+
+	return tileList.size();
+
+}
 
 string Feature::getName(){
 	return name;
@@ -27,8 +51,10 @@ bool Feature::getComplete(){
 
 int Feature::addTile(Tile* tileToAdd){
 	//was void, but I want to return a legality int
+
+	int tempSize = tileList.size();
 	int addCheck = 0;
-	for(int i = 0; i < 9; i++){
+	for(int i = 0; i < tempSize; i++){
 
 		if(tileList.empty() == false && tileList[i] == tileToAdd){
 			addCheck = 1;
@@ -59,6 +85,13 @@ Field::Field(){
 
 }
 
+Field::Field(Tile* startingTile){
+
+	name = "Field";
+	addTile(startingTile);
+
+}
+
 string Field::getName(){
 	return name;
 }
@@ -66,6 +99,13 @@ string Field::getName(){
 City::City(){
 
 	name = "City";
+
+}
+
+City::City(Tile* startingTile){
+
+	name = "City";
+	addTile(startingTile);
 
 }
 
@@ -79,6 +119,13 @@ Road::Road(){
 
 }
 
+Road::Road(Tile* startingTile){
+
+	name = "Road";
+	addTile(startingTile);
+
+}
+
 string Road::getName(){
 	return name;
 }
@@ -86,6 +133,13 @@ string Road::getName(){
 Monastery::Monastery(){
 
 	name = "Monastery";
+
+}
+
+Monastery::Monastery(Tile* startingTile){
+
+	name = "Monastery";
+	addTile(startingTile);
 
 }
 

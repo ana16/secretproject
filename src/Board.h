@@ -31,6 +31,8 @@ public:
     void updateAvailPos(int x, int y);
     void printAvailPos();
 
+    void makeRandomMove(Tile* tileToAdd);
+
     bool checkLegalMove(Tile* tile, int x, int y);
 
 private:

@@ -56,6 +56,8 @@ public:
 	int addToFeature(int featureNum,Tile* tileToAdd);
 	void repointFeature(Feature* featureInput,int index);
 
+	void repointPointers(Feature* origPointer, Feature* newPointer);
+
 	Feature* getFeature(int index);
 
 	void rotateR();
