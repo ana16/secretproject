@@ -135,10 +135,40 @@ Tile::Tile(int featureInput[]){
 }
 
 void Tile::rotateR(){
-	//
+	Feature* tmp;
+
+	tmp = Features[0];
+	//Rotating Faces
+	Features[0] = Features[3];
+	Features[3] = Features[1];
+	Features[1] = Features[2];
+	Features[2] = tmp;
+
+	tmp = Features[4];
+	//Rotating Corners
+	Features[4] = Features[5];
+	Features[5] = Features[7];
+	Features[7] = Features[6];
+	Features[6] = tmp;
 }
+
 void Tile::rotateL(){
-	//
+	Feature* tmp;
+
+	//Rotating Faces
+	tmp = Features[0];
+	Features[0] = Features[2];
+	Features[2] = Features[1];
+	Features[1] = Features[3];
+	Features[3] = tmp;
+
+	//Rotating corners
+	tmp = Features[4];
+	Features[4] = Features[6];
+	Features[6] = Features[7];
+	Features[7] = Features[5];
+	Features[5] = tmp;
+	rotations++;
 }
 
 std::string Tile::exportTileInfo(){

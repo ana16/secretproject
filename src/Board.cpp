@@ -41,7 +41,7 @@ int main(){
 
 	tempTile = new Tile(t4);
 
-	myBoard.addTile(tempTile,41,41);
+	myBoard.addTile(tempTile,41,39);
 
 	tempTile = new Tile(t13);
 
@@ -49,7 +49,7 @@ int main(){
 
 	tempTile = new Tile(t17);
 
-	myBoard.addTile(tempTile,41,39);
+	myBoard.addTile(tempTile,41,41);
 
 	myBoard.getTile(40,40)->printTileFeatures();
 	cout << endl;
@@ -60,6 +60,10 @@ int main(){
 	myBoard.getTile(42,40)->printTileFeatures();
 	cout << endl;
 	myBoard.getTile(41,39)->printTileFeatures();
+	cout << endl;
+
+	myBoard.printAvailPos();
+
 
 
 //	Tile* tempTile = myDeck.pop();
@@ -91,7 +95,7 @@ void Board::addTile(Tile* tileToAdd,int x,int y){
 
 
 	gameGraph[x][y] = tileToAdd;
-
+	updateAvailPos(x,y);
 
 
 	int checker = 0;
@@ -345,6 +349,91 @@ void Board::printBoard(){
 
 		return 0;
 	}
+
+	void Board::updateAvailPos(int x, int y){
+		int checker = 0;
+
+		for(int i = 0; i < openLocVector.size(); i++){
+			if(openLocVector[i].x == x && openLocVector[i].y == y){
+				openLocVector.erase(openLocVector.begin()+i);
+				checker = 1;
+				break;
+			}
+		}
+
+		if(checker == 0){
+
+			//add north
+			if(gameGraph[x][y+1] == NULL){
+
+				for(int i = 0; i < openLocVector.size(); i++){
+					if(openLocVector[i].x == x && openLocVector[i].y == (y+1)){
+						openLocVector.erase(openLocVector.begin()+i);
+						break;
+					}
+				}
+				loc temp;
+				temp.x = x;
+				temp.y = y+1;
+				openLocVector.push_back(temp);
+
+			}
+			//add south
+			if(gameGraph[x][y-1] == NULL){
+
+				for(int i = 0; i < openLocVector.size(); i++){
+					if(openLocVector[i].x == x && openLocVector[i].y == (y-1)){
+						openLocVector.erase(openLocVector.begin()+i);
+						break;
+					}
+				}
+				loc temp;
+				temp.x = x;
+				temp.y = y-1;
+				openLocVector.push_back(temp);
+
+			}
+			//add east
+			if(gameGraph[x+1][y] == NULL){
+
+				for(int i = 0; i < openLocVector.size(); i++){
+					if(openLocVector[i].x == (x+1) && openLocVector[i].y == y){
+						openLocVector.erase(openLocVector.begin()+i);
+						break;
+					}
+				}
+				loc temp;
+				temp.x = x+1;
+				temp.y = y;
+				openLocVector.push_back(temp);
+
+			}
+			if(gameGraph[x-1][y] == NULL){
+
+				for(int i = 0; i < openLocVector.size(); i++){
+					if(openLocVector[i].x == (x-1) && openLocVector[i].y == y){
+						openLocVector.erase(openLocVector.begin()+i);
+						break;
+					}
+				}
+				loc temp;
+				temp.x = x-1;
+				temp.y = y;
+				openLocVector.push_back(temp);
+
+			}
+
+		}
+
+	}
+
+	void Board::printAvailPos(){
+
+		for(int i = 0; i < openLocVector.size(); i++){
+			cout << "open: " << "x: " << openLocVector[i].x << " y: " << openLocVector[i].y << endl;
+		}
+
+	}
     
     void Board::availPosAroundTile(Tile tile){
 
@@ -397,7 +486,39 @@ void Board::printBoard(){
 
     }
 
-    
+    bool Board::checkLegalMove(Tile* tile, int x, int y) {
+
+    	cout << "trying to place tile at:" << x << "," << y;
+    	//N, S, E, W
+
+    	//check to the north
+    	if (gameGraph[x][y+1] != NULL) {
+    		if (tile->getFeature(0)->getName() != (gameGraph[x - 1][y])->getFeature(1)->getName()) {
+    			return false;
+    		}
+    	}
+    	//check to the south
+    	else if (gameGraph[x][y-1] != NULL) {
+    		if (tile->getFeature(1)->getName() != (gameGraph[x + 1][y])->getFeature(0)->getName()) {
+    			return false;
+    		}
+    	}
+    	//check to the east
+    	else if (gameGraph[x+1][y] != NULL) {
+    		if (tile->getFeature(2)->getName() != (gameGraph[x][y+1])->getFeature(3)->getName()) {
+    			return false;
+    		}
+    	}
+    	//check to the west
+    	else if (gameGraph[x-1][y] != NULL) {
+    		if (tile->getFeature(3)->getName() != (gameGraph[x][y-1])->getFeature(2)->getName()) {
+    			return false;
+    		}
+    	}
+//    	else addTile(tile,x,y);
+    	return true;
+
+    }
 
 
 
