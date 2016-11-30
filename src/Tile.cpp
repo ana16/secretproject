@@ -5,6 +5,8 @@
 #include <string>
 #include "Tile.h"
 
+using std::cout;
+using std::endl;
 
 
 Tile::Tile() {

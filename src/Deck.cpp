@@ -8,8 +8,15 @@
 #include "Deck.h"
 
 
-using namespace std;
+//using namespace std;
+
+Tile* Deck::getTile(int x){
 	
+	Tile* newTile = new Tile(t[x]);
+	
+	return newTile;
+}
+
 Deck::Deck(){
 	cout << "this runs\n";
 
