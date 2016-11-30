@@ -10,8 +10,9 @@
 #include "Tile.h"
 #include "Player.cpp"
 
-using namespace std;
-
+//using namespace std;
+using std::cout;
+using std::endl;
 
 class Board{
     
@@ -51,13 +52,13 @@ private:
 		
 };
 
-inline Board::Board( )          // constructor
-{
-    sizeX=80;
-    sizeY=80;
-    cout << "in constructor \n";
-    turn = true;                
-   
-}
+//inline Board::Board( )          // constructor
+//{
+//    sizeX=80;
+//    sizeY=80;
+//    cout << "in constructor \n";
+//    turn = true;
+//
+//}
 
 #endif

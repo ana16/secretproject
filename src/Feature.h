@@ -12,7 +12,9 @@
 #include <vector>
 #include "Tile.h"
 
-using namespace std;
+//using namespace std;
+using std::vector;
+using std::string;
 
 class Tile;
 

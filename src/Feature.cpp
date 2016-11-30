@@ -6,7 +6,9 @@
 #include "Feature.h"
 
 
-using namespace std;
+//using namespace std;
+using std::cout;
+using std::endl;
 
 
 Feature::Feature() {

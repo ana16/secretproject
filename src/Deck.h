@@ -10,7 +10,10 @@
 
 #include "Tile.h"
 #include <stack>
-using namespace std;
+//using namespace std;
+
+using std::cout;
+using std::stack;
 
 class Deck{
 
@@ -64,6 +67,9 @@ public:
 	Tile* pop();
 
 	int getSize();
+	
+	Tile* getTile(int x);
+	
 };
 
 
