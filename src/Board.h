@@ -32,13 +32,15 @@ public:
     void updateAvailPos(int x, int y);
     void printAvailPos();
 
-    void makeRandomMove(Tile* tileToAdd);
+    int makeRandomMove(Tile* tileToAdd);
 
     bool checkLegalMove(Tile* tile, int x, int y);
 
+    int meepleCount = 7;
+
 private:
 
-    Tile* gameGraph[80][80];
+    Tile* gameGraph[80][80] = {{ NULL }};
 	Feature fields[10];
 	Feature cities[10];
 	Feature roads[10];

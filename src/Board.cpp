@@ -189,7 +189,7 @@ Board::Board(){
 	int t18[12] = {2, 2, 1, 0, 0, 0, 0, 0, 2, 3, 0, 18};
 	Tile* newTile = new Tile(t18);
 
-	this->addTile(newTile,40,40);
+	addTile(newTile,40,40);
 
 
 }
@@ -201,7 +201,7 @@ Tile* Board::getTile(int x, int y){
 
 }
 
-void Board::makeRandomMove(Tile* tileToAdd){
+int Board::makeRandomMove(Tile* tileToAdd){
 
 	//get tile as input
 	//for loop through availPosList
@@ -213,6 +213,7 @@ void Board::makeRandomMove(Tile* tileToAdd){
 
 	int checker = 0;
 	for(int j = 0; j < 4; j++){
+//		std::cout << openLocVector.size();
 		for(int i = 0; i < openLocVector.size(); i++){
 
 			if(checkLegalMove(tileToAdd,openLocVector[i].x,openLocVector[i].y) == true){ //look in here
@@ -233,6 +234,8 @@ void Board::makeRandomMove(Tile* tileToAdd){
 
 	}
 
+	return 9999;
+
 
 }
 
@@ -242,6 +245,9 @@ void Board::addTile(Tile* tileToAdd,int x,int y){
 	gameGraph[x][y] = tileToAdd;
 	updateAvailPos(x,y);
 	cout << "tile: " << tileToAdd->tileNum << " added to  (" << x << "," << y << ")" << endl;
+
+	tileToAdd->xPos = x;
+	tileToAdd->yPos = y;
 
 	int checker = 0;
 

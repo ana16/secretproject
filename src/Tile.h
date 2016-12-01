@@ -59,6 +59,8 @@ public:
 	void repointPointers(Feature* origPointer, Feature* newPointer);
 
 	Feature* getFeature(int index);
+	
+	int getRotations();
 
 	void rotateR();
 	void rotateL();
@@ -66,6 +68,8 @@ public:
 	std::string exportTileInfo();
 
 	void printTileFeatures();
+	
+	int determineMeeple();
 
 
 };

@@ -50,8 +50,8 @@ Deck::Deck(){
 
 	}
 
-	newTile = new Tile(t[18]);
-	tileStack.push(newTile);
+//	newTile = new Tile(t[18]);
+//	tileStack.push(newTile);
 
 //	Tile printer;
 //	cout << "stacksize: " << tileStack.size() << endl;

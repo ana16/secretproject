@@ -9,6 +9,32 @@ using std::cout;
 using std::endl;
 
 
+int Tile::getRotations(){
+	return rotations;
+}
+
+
+int Tile::determineMeeple(){
+	
+	
+	int list[9] = {5,0,4,3,8,2,7,1,6};
+	
+	for(int j = 0; j < 9; j++){
+		
+		int i = list[j];
+		
+		if(Features[i] != NULL && Features[i]->getTileListSize() == 1){
+			return j+1;
+			
+		}
+		else {
+			return 0;
+		}
+	}
+	
+	
+}
+
 Tile::Tile() {
 	North = South = East = West = 0;
 	xPos = 1;
