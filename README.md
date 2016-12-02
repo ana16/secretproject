@@ -1,4 +1,9 @@
 # secretproject
+
+Contributions
+Our GitHub displays that there are only 2 contributors to the project. However, there were not only 2 people working on our TigerZone game. The reason GitHub shows this is because Matt, our team leader and the creator of our GitHub project, was the only one able to successfully push files to the GitHub. Matt helped all the team members try to push their work to the GitHub, but only Nikita had some success. The remaining four team members were not able to successfully publish to GitHub. Rather than wasting time getting the GitHub to work perfectly for everyone, we simply each worked on individual files and all sent them to Matt. The pushed request and commit titles also include names of contributors.
+
+
 # UML
 
 ![alt-tag](https://github.com/mattdmorris/secretproject/blob/master/uml/umlpng.png)
