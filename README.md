@@ -58,6 +58,10 @@ This vector is updated on every addTile.
 
 The game was tested with a GUI built in Javascript and HTML5. It uses the createjs engine and is in the graphics folder under Newfile.html  . You input the exportBoard.txt file that is produced by the board->exportBoardState function.
 
+# Building the game
+
+In secretproject folder, run "make all".
+
 
 
 
