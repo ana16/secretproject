@@ -33,6 +33,7 @@ public:
     void printAvailPos();
 
     int makeRandomMove(Tile* tileToAdd);
+    
 
     bool checkLegalMove(Tile* tile, int x, int y);
 
