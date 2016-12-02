@@ -14,173 +14,173 @@ using std::ofstream;
 
 
 
-//int main(){
-////    Board myBoard;
-////    myBoard.addTile();
-////    // myBoard.printBoard();
-////
-////    myBoard.exportBoardState();
-//
-////	cout << "main in board\n";
-//	Deck myDeck;
-//
-//	//main problem is if a tile connects two separate fields, one of the fields gets overwritten without adding the other field, need to find a way to add the two fields together
-//
-//
-//	Board myBoard;
-//
-//	Tile* tempTile = myDeck.pop();
-//
-//	myBoard.addTile(tempTile,40,40);
-//
-//
-//	while(myDeck.getSize() > 0){
-//
-//		tempTile = myDeck.pop();
-//		cout << "tileNum: " << tempTile->tileNum << endl;
-//		myBoard.makeRandomMove(tempTile);
-//
-//	}
-//
-////	this runs
-////	in constructor
-////	tile: 18 added to  (40,40)
-////	tileNum: 16
-////	tile: 16 added to  (40,39)
-////	tileNum: 4
-////	tile: 4 added to  (39,40)
-////	tileNum: 20
-////	tile: 20 added to  (40,41)
-////	tileNum: 16
-////	tile: 16 added to  (40,38)
-////	tileNum: 4
-////	tile: 4 added to  (41,39)
-////	tileNum: 21
-////	tile: 21 added to  (39,39)
-////	tileNum: 4
-////	tile: 4 added to  (38,40)
-////	tileNum: 20
-////	tile: 20 added to  (41,38)
-////	tileNum: 20
-////	tile: 20 added to  (38,39)
-////	tileNum: 16
-////	tile: 16 added to  (41,41)
-//
-//
-////	//debug with this test
-////	int t16[12] = {2, 2, 0, 0, 0, 0, 0, 0, 2, 8, 0, 16};
-////	int t20[12] = {2, 0, 0, 2, 0, 0, 0, 0, 2, 9, 0, 20};
-////	int t1[12] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1};
-////	int t21[12] = {1, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 21};
-////	int t5[12] = {0, 1, 1, 1, 0, 0, 1, 1, 0, 4, 0, 5};
-////	int t4[12] = {0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 4};
-////
-////	tempTile = new Tile(t16);
-////
-////	myBoard.makeRandomMove(tempTile);
-////
-////	tempTile = new Tile(t4);
-////
-////	myBoard.makeRandomMove(tempTile);
-////
-////	tempTile = new Tile(t20);
-////
-////	myBoard.makeRandomMove(tempTile);
-////
-////	tempTile = new Tile(t16);
-////
-////	myBoard.makeRandomMove(tempTile);
-////
-////	tempTile = new Tile(t4);
-////
-////	myBoard.makeRandomMove(tempTile);
-////
-////	tempTile = new Tile(t21);
-////
-////	myBoard.makeRandomMove(tempTile);
-////
-////	tempTile = new Tile(t4);
-////
-////	myBoard.makeRandomMove(tempTile);
-////
-////	tempTile = new Tile(t20);
-////
-////	myBoard.makeRandomMove(tempTile);
-//
-////	tempTile = new Tile(t20);
-////
-////	myBoard.makeRandomMove(tempTile);
-//
-////	tempTile = new Tile(t16);
-////
-////	myBoard.makeRandomMove(tempTile);
-//
-//
-//
-//	//original testing code
-////	int t0[12] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0};
-////	int t1[12] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1};
-////	int t5[12] = {0, 1, 1, 1, 0, 0, 1, 1, 0, 4, 0, 5};
-////	int t4[12] = {0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 4};
-////	int t13[12] = {0, 0, 1, 1, 0, 0, 0, 0, 1, 3, 0, 13};
-////	int t17[12] = {1, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0, 17};
-////
-////	Tile* tempTile = new Tile(t1);
-//////	tempTile->printTileFeatures();
-////
-////	myBoard.addTile(tempTile,40,40);
-////
-////	tempTile = new Tile(t5);
-////
-////	myBoard.addTile(tempTile,41,40);
-////
-////	tempTile = new Tile(t4);
-////
-////	myBoard.addTile(tempTile,41,39);
-////
-////	tempTile = new Tile(t13);
-////
-////	myBoard.addTile(tempTile,42,40);
-////
-////	tempTile = new Tile(t17);
-////
-////	myBoard.addTile(tempTile,41,41);
-////
-////	myBoard.getTile(40,40)->printTileFeatures();
-////	cout << endl;
-////	myBoard.getTile(41,40)->printTileFeatures();
-////	cout << endl;
-////	myBoard.getTile(41,41)->printTileFeatures();
-////	cout << endl;
-////	myBoard.getTile(42,40)->printTileFeatures();
-////	cout << endl;
-////	myBoard.getTile(41,39)->printTileFeatures();
-////	cout << endl;
-////
-////	myBoard.printAvailPos();
-//
-//
-//
-//
-//
-//
-////	Tile* tempTile = myDeck.pop();
-////
-////	myBoard.addTile(tempTile,40,40);
-////
-////	tempTile = myDeck.pop();
-////
-////	myBoard.addTile(tempTile,40,41);
-////
-////	tempTile = myDeck.pop();
-////
-////	myBoard.addTile(tempTile,40,42);
-//
-//	myBoard.exportBoardState();
-//
-//
+// int main(){
+// //    Board myBoard;
+// //    myBoard.addTile();
+// //    // myBoard.printBoard();
+// //
+// //    myBoard.exportBoardState();
+
+// //	cout << "main in board\n";
+// 	Deck myDeck;
+
+// 	//main problem is if a tile connects two separate fields, one of the fields gets overwritten without adding the other field, need to find a way to add the two fields together
+
+
+// 	Board myBoard;
+
+// 	Tile* tempTile = myDeck.pop();
+
+// 	myBoard.addTile(tempTile,40,40);
+
+
+// 	while(myDeck.getSize() > 0){
+
+// 		tempTile = myDeck.pop();
+// 		cout << "tileNum: " << tempTile->tileNum << endl;
+// 		myBoard.makeRandomMove(tempTile);
+
+// 	}
+
+// //	this runs
+// //	in constructor
+// //	tile: 18 added to  (40,40)
+// //	tileNum: 16
+// //	tile: 16 added to  (40,39)
+// //	tileNum: 4
+// //	tile: 4 added to  (39,40)
+// //	tileNum: 20
+// //	tile: 20 added to  (40,41)
+// //	tileNum: 16
+// //	tile: 16 added to  (40,38)
+// //	tileNum: 4
+// //	tile: 4 added to  (41,39)
+// //	tileNum: 21
+// //	tile: 21 added to  (39,39)
+// //	tileNum: 4
+// //	tile: 4 added to  (38,40)
+// //	tileNum: 20
+// //	tile: 20 added to  (41,38)
+// //	tileNum: 20
+// //	tile: 20 added to  (38,39)
+// //	tileNum: 16
+// //	tile: 16 added to  (41,41)
+
+
+// //	//debug with this test
+// //	int t16[12] = {2, 2, 0, 0, 0, 0, 0, 0, 2, 8, 0, 16};
+// //	int t20[12] = {2, 0, 0, 2, 0, 0, 0, 0, 2, 9, 0, 20};
+// //	int t1[12] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1};
+// //	int t21[12] = {1, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 21};
+// //	int t5[12] = {0, 1, 1, 1, 0, 0, 1, 1, 0, 4, 0, 5};
+// //	int t4[12] = {0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 4};
+// //
+// //	tempTile = new Tile(t16);
+// //
+// //	myBoard.makeRandomMove(tempTile);
+// //
+// //	tempTile = new Tile(t4);
+// //
+// //	myBoard.makeRandomMove(tempTile);
+// //
+// //	tempTile = new Tile(t20);
+// //
+// //	myBoard.makeRandomMove(tempTile);
+// //
+// //	tempTile = new Tile(t16);
+// //
+// //	myBoard.makeRandomMove(tempTile);
+// //
+// //	tempTile = new Tile(t4);
+// //
+// //	myBoard.makeRandomMove(tempTile);
+// //
+// //	tempTile = new Tile(t21);
+// //
+// //	myBoard.makeRandomMove(tempTile);
+// //
+// //	tempTile = new Tile(t4);
+// //
+// //	myBoard.makeRandomMove(tempTile);
+// //
+// //	tempTile = new Tile(t20);
+// //
+// //	myBoard.makeRandomMove(tempTile);
+
+// //	tempTile = new Tile(t20);
+// //
+// //	myBoard.makeRandomMove(tempTile);
+
+// //	tempTile = new Tile(t16);
+// //
+// //	myBoard.makeRandomMove(tempTile);
+
+
+
+// 	//original testing code
+// //	int t0[12] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0};
+// //	int t1[12] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1};
+// //	int t5[12] = {0, 1, 1, 1, 0, 0, 1, 1, 0, 4, 0, 5};
+// //	int t4[12] = {0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 4};
+// //	int t13[12] = {0, 0, 1, 1, 0, 0, 0, 0, 1, 3, 0, 13};
+// //	int t17[12] = {1, 1, 0, 0, 0, 0, 0, 0, 0, 3, 0, 17};
+// //
+// //	Tile* tempTile = new Tile(t1);
+// ////	tempTile->printTileFeatures();
+// //
+// //	myBoard.addTile(tempTile,40,40);
+// //
+// //	tempTile = new Tile(t5);
+// //
+// //	myBoard.addTile(tempTile,41,40);
+// //
+// //	tempTile = new Tile(t4);
+// //
+// //	myBoard.addTile(tempTile,41,39);
+// //
+// //	tempTile = new Tile(t13);
+// //
+// //	myBoard.addTile(tempTile,42,40);
+// //
+// //	tempTile = new Tile(t17);
+// //
+// //	myBoard.addTile(tempTile,41,41);
+// //
+// //	myBoard.getTile(40,40)->printTileFeatures();
+// //	cout << endl;
+// //	myBoard.getTile(41,40)->printTileFeatures();
+// //	cout << endl;
+// //	myBoard.getTile(41,41)->printTileFeatures();
+// //	cout << endl;
+// //	myBoard.getTile(42,40)->printTileFeatures();
+// //	cout << endl;
+// //	myBoard.getTile(41,39)->printTileFeatures();
+// //	cout << endl;
+// //
+// //	myBoard.printAvailPos();
+
+
+
+
+
+
+// //	Tile* tempTile = myDeck.pop();
+// //
+// //	myBoard.addTile(tempTile,40,40);
+// //
+// //	tempTile = myDeck.pop();
+// //
+// //	myBoard.addTile(tempTile,40,41);
+// //
+// //	tempTile = myDeck.pop();
+// //
+// //	myBoard.addTile(tempTile,40,42);
+
+// 	myBoard.exportBoardState();
+
+
 //    return 0;
-//}
+// }
 
 Board::Board(){
 
@@ -220,6 +220,7 @@ int Board::makeRandomMove(Tile* tileToAdd){
 
 				addTile(tileToAdd,openLocVector[i].x,openLocVector[i].y); //stops here
 				checker = 1;
+				return 0;
 				break;
 			}
 
@@ -228,6 +229,7 @@ int Board::makeRandomMove(Tile* tileToAdd){
 		}
 		if(checker == 1){
 			break;
+			return 0;
 		}
 
 		tileToAdd->rotateL();
